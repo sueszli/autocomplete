@@ -16,11 +16,11 @@
 `*-*   `*-*  `*-*'
 ```
 
-The language modeling task is to assign a probability for the likelihood of a given word (or a sequence of words) to follow a sequence of words as in: $P(w_i | w_1, w_2, \ldots, w_{i-1})$.
+The language modeling task is to assign a probability for the likelihood of a given word (or a sequence of words) to follow a sequence of words - as in $P(w_i | w_1, w_2, \ldots, w_{i-1})$.
 
-There are many ways to approach this task, and over the years, we have come a long way from traditional markov chains, n-grams to recurrent neural networks and the latest transformer models[^fst]. Compared to Recurrent Neural Networks, the transformer model [^attention] not only is better at capturing long-range dependencies but also GPU parallelizable and doesn't need any sequence unfolding to be trained which resolves the vanishing gradient problem and massively speeds up training.
+There are many ways to approach this task, and over the years, we have come a long way from traditional markov chains, n-grams to recurrent neural networks and the latest transformer models[^fst]. The transformer model [^attention] not only is better at capturing long-range dependencies than its predecessors like LSTM [^lstm] but also GPU parallelizable and doesn't need any sequence unfolding to be trained which resolves the vanishing gradient problem and massively speeds up training.
 
-The task behind large language models has remained the same, but we have improved the scale and efficiency of the models.
+<!-- todo: also add failed attempts to the repository, explain process -->
 
 ---
 
