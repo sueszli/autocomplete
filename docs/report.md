@@ -2,11 +2,13 @@
 
 **Student**: 11912007, Yahya JABARY
 
-**Topic**: 3.2.3: Deep Learning for Image/Text Classification / Next-word prediction (Language Modelling) using Deep Learning
+**Topic**: 3.2.3: Deep Learning for Image/Text Classification, Next-word prediction (Language Modelling) using Deep Learning
 
-**Dataset**: https://github.com/GeorgeMcIntire/fake_real_news_dataset
+**Dataset**: Fake News Dataset - https://github.com/GeorgeMcIntire/fake_real_news_dataset
 
 <!--
+
+see: https://tuwel.tuwien.ac.at/course/view.php?id=64037
 
 upload:
 
@@ -30,11 +32,19 @@ testing:
 
 ---
 
-The language modeling task is to assign a probability for the likelihood of a given word (or a sequence of words) to follow a sequence of words - as in $P(w_i | w_1, w_2, \ldots, w_{i-1})$.
+The language modeling task is to assign a probability for the likelihood of a given word (or a sequence of words) to follow a sequence of words, as in: $P(w_i | w_1, w_2, \ldots, w_{i-1})$.
+
+In short, the goal is to predict the next word in a sentence given the previous words.
 
 There are many ways to approach this task, and over the years, we have come a long way from traditional markov chains, n-grams to recurrent neural networks and the latest transformer models[^fst]. The transformer model [^attention] not only is better at capturing long-range dependencies than its predecessors like LSTM [^lstm] but also GPU parallelizable and doesn't need any sequence unfolding to be trained which resolves the vanishing gradient problem and massively speeds up training.
 
----
+This recent breakthrough (among others) is the foundation of large scale language models like GPT-3, BERT (Bidirectional Encoder Representations from Transformers), and others.
+
+In this project I've implemented a simple LSTM based language model for educational purposes.
+
+_Process_:
+
+-   I started off implementing the classic MNISt exercise and simple RNNs in PyTorch and TensorFlow (see: `playground/`) to familiarize myself and pick a framework for the project. I chose PyTorch for its simplicity and flexibility.
 
 ---
 
