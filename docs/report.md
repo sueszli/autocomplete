@@ -43,13 +43,9 @@ This is a simple implementation of an LSTM based language model for educational 
 _Development Process_:
 
 -   **Choosing PyTorch:** I was curious which framework RNNs are most elegant to be implemented in. So I tried both PyTorch and TensorFlow following several tutorials (see: `./playground/`). I decided to stick to PyTorch.
--   **Choosing an initial model:** Next following a tutorial on LSTM based language models [^kaggle] I implemented one in PyTorch. This model was initially trained on a dataset of Medium article titles and seemed to perform reasonably well right out of the box. It seemed like a good starting point.
+-   **Choosing an initial LSTM model:** Next following a tutorial on LSTM based language models [^kaggle] I implemented one in PyTorch. This model was initially trained on a dataset of Medium article titles and seemed to perform reasonably well right out of the box. It seemed like a good starting point.
 -   **Choosing a dataset:** I modified the Kaggle model to run on multiple different datasets, in particular, a 0.5 GB Reddit dataset of comments from `r/jokes`. Due to the fact that it took too long to train on my local machine, I decided to pivot to a smaller dataset. I found an interesting dataset of fake and real news articles on GitHub.
 -   **Optimizing:** I then optimized both the effectiveness and efficiency of the model by tuning hyperparameters and refactoring the code.
-
-The model initially took 15min to train and had a K-Accuracy of 10.10%. But by the end of the development process, the model took only 10min to train and had a K-Accuracy of at least 16.91%.
-
-Here is a nice visualization of the training process:
 
 ...
 
