@@ -24,7 +24,4 @@ evaluation:
 
 datasets:
 
--   20 newsgroups: http://qwone.com/~jason/20Newsgroups/
--   reuters: http://www.daviddlewis.com/resources/testcollections/reuters21578/
 -   fake news dataset: https://github.com/GeorgeMcIntire/fake_real_news_dataset
--   anything else :-)
