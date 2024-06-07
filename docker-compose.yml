@@ -1,6 +1,6 @@
 services:
     main:
-        container_name: new-project
+        container_name: autocomplete
         build: .
 
         # mount volume

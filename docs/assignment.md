@@ -6,7 +6,6 @@ chosen topic: 3.2.1: Deep Learning for Image/Text Classification / Next-word pre
 
 -   given an incomplete sequence of words, find the most likely next word
 -   use deep learning
--   related paper: https://arxiv.org/pdf/1906.03591
 
 requirements:
 
