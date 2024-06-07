@@ -5,11 +5,11 @@
  .  : `. .
  : _   '  \
  ; *` _.   `*-._
- `-.-'          `-.      autocomplete
-   ;       `       `.    ~~~~~~~~~~~~
-   :.       .        \
-   . \  .   :   .-'   .  a simple LSTM based language model
-   '  `+.;  ;  '      :  for educational purposes
+ `-.-'          `-.
+   ;       `       `.      autocomplete
+   :.       .        \     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   . \  .   :   .-'   .    a simple LSTM based language model
+   '  `+.;  ;  '      :    for educational purposes
    :  '  |    ;       ;-.
    ; '   : :`-:     _.`* ;
 .*' /  .*' ; .*`- +'  `*'
