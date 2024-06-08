@@ -23,8 +23,6 @@
 `*-*   `*-*  `*-*'
 ```
 
-<br><br>
-
 The language modeling task is to assign a probability for the likelihood of a given word (or a sequence of words) to follow a sequence of words, as in: $P(w_i | w_1, w_2, \ldots, w_{i-1})$.
 
 In short, the goal is to predict the next word in a sentence given the previous words.
@@ -33,13 +31,13 @@ There are many ways to approach this task, and over the years, we have come a lo
 
 This recent breakthrough (among others) is the foundation of large scale language models like GPT-3, BERT (Bidirectional Encoder Representations from Transformers), and others.
 
-This is a simple implementation of an LSTM based language model for educational purposes, trained on a dataset of fake and real news articles: https://github.com/GeorgeMcIntire/fake_real_news_dataset
+This is a simple implementation of a LSTM based language model for educational purposes, trained on a dataset of fake and real news articles: https://github.com/GeorgeMcIntire/fake_real_news_dataset
 
 _Development Process_:
 
 -   **Choosing PyTorch:** I was curious which framework language models are most elegant to be implemented in. So I tried both PyTorch and TensorFlow following several tutorials (see: `./playground/`). I decided to stick to PyTorch.
 
--   **Choosing an initial LSTM model:** Next, I tried both a simple LSTM model and the built-in Pytorch `nn.Transformer` model. I found the LSTM model to be more a lot easier to follow. I found a Kaggle tutorial on LSTM based language models [^kaggle] I used as an initial starting point. This model was trained on a dataset of Medium article titles and seemed to perform reasonably well right out of the box.
+-   **Choosing an initial LSTM model:** Next, I tried both a simple LSTM model and the built-in Pytorch `nn.Transformer` module. I found the LSTM model to be more a lot easier to follow. I found a Kaggle tutorial on LSTM based language models [^kaggle] as an initial starting point. This model was trained on a dataset of Medium article titles and seemed to perform reasonably well right out of the box.
 
 -   **Choosing a dataset:** I modified the Kaggle model to run on multiple different datasets, in particular, a 0.5 GB Reddit dataset of comments from `r/jokes`. Due to the fact that it took too long to train on my local machine, I decided to pivot to a smaller dataset. I found an interesting dataset of fake and real news articles on GitHub.
 
@@ -99,7 +97,7 @@ Runtime: 06:06
 
 Machine specs: `Darwin MBP 23.4.0 Darwin Kernel Version 23.4.0: Fri Mar 15 00:12:49 PDT 2024; root:xnu-10063.101.17~1/RELEASE_ARM64_T6020 arm64`
 
-Unfortunately, the model is overfitting the training data and the test accuracy is quite low. This is likely due to the small size of the dataset and the simplicity of the model. The model could be improved by using a more complex model like bidirectional LSTMs, transformers, or a larger dataset.
+Unfortunately, the model is overfitting the training data and the test accuracy is quite low. This is likely due to the small size of the dataset and the simplicity of the model. The model could be replaced by using a more complex model like bidirectional LSTMs, transformers, or a larger dataset.
 
 # Qualitative Results
 
