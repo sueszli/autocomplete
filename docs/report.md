@@ -47,7 +47,63 @@ _Development Process_:
 -   **Choosing a dataset:** I modified the Kaggle model to run on multiple different datasets, in particular, a 0.5 GB Reddit dataset of comments from `r/jokes`. Due to the fact that it took too long to train on my local machine, I decided to pivot to a smaller dataset. I found an interesting dataset of fake and real news articles on GitHub.
 -   **Optimizing:** I then optimized both the effectiveness and efficiency of the model by tuning hyperparameters and refactoring the code.
 
-...
+# Quantitative Results
+
+![](../assets/loss.png)
+
+I used seed 42 for reproducibility. The model was trained for 50 epochs with a batch size of 64 and a learning rate of 0.001. The model achieved a test K-Accuracy of 16.13% after 50 epochs.
+
+```
+0/50 [00:00<?, ?it/s]Epoch 0/50, Loss: 6.8260, Train K-Accuracy: 10.58%
+2/50 [00:14<05:41,  7.11s/it]Epoch 2/50, Loss: 7.1692, Train K-Accuracy: 14.76%
+4/50 [00:30<05:37,  7.33s/it]Epoch 4/50, Loss: 6.7071, Train K-Accuracy: 20.35%
+6/50 [00:45<05:19,  7.27s/it]Epoch 6/50, Loss: 5.7136, Train K-Accuracy: 28.94%
+8/50 [01:00<04:56,  7.05s/it]Epoch 8/50, Loss: 5.4600, Train K-Accuracy: 39.48%
+10/50 [01:14<04:40,  7.02s/it]Epoch 10/50, Loss: 4.7324, Train K-Accuracy: 49.07%
+12/50 [01:29<04:24,  6.96s/it]Epoch 12/50, Loss: 3.1925, Train K-Accuracy: 57.42%
+14/50 [01:42<03:59,  6.66s/it]Epoch 14/50, Loss: 3.5348, Train K-Accuracy: 64.83%
+16/50 [01:55<03:41,  6.51s/it]Epoch 16/50, Loss: 2.2261, Train K-Accuracy: 70.40%
+18/50 [02:09<03:30,  6.58s/it]Epoch 18/50, Loss: 3.2683, Train K-Accuracy: 74.38%
+20/50 [02:23<03:16,  6.56s/it]Epoch 20/50, Loss: 2.6988, Train K-Accuracy: 77.83%
+22/50 [02:36<03:04,  6.60s/it]Epoch 22/50, Loss: 1.9860, Train K-Accuracy: 80.59%
+24/50 [02:52<03:02,  7.01s/it]Epoch 24/50, Loss: 2.7795, Train K-Accuracy: 83.07%
+26/50 [03:06<02:45,  6.88s/it]Epoch 26/50, Loss: 2.7380, Train K-Accuracy: 84.88%
+28/50 [03:20<02:31,  6.87s/it]Epoch 28/50, Loss: 2.6520, Train K-Accuracy: 86.10%
+30/50 [03:36<02:22,  7.13s/it]Epoch 30/50, Loss: 1.2683, Train K-Accuracy: 87.14%
+32/50 [03:51<02:09,  7.20s/it]Epoch 32/50, Loss: 1.5286, Train K-Accuracy: 88.09%
+34/50 [04:07<01:56,  7.28s/it]Epoch 34/50, Loss: 1.4217, Train K-Accuracy: 88.92%
+36/50 [04:21<01:40,  7.17s/it]Epoch 36/50, Loss: 2.2776, Train K-Accuracy: 89.24%
+38/50 [04:36<01:25,  7.10s/it]Epoch 38/50, Loss: 1.8056, Train K-Accuracy: 89.82%
+40/50 [04:52<01:13,  7.37s/it]Epoch 40/50, Loss: 2.3679, Train K-Accuracy: 90.21%
+42/50 [05:06<00:56,  7.09s/it]Epoch 42/50, Loss: 1.8625, Train K-Accuracy: 90.54%
+44/50 [05:22<00:43,  7.19s/it]Epoch 44/50, Loss: 1.3927, Train K-Accuracy: 90.77%
+46/50 [05:36<00:28,  7.05s/it]Epoch 46/50, Loss: 0.5396, Train K-Accuracy: 91.00%
+48/50 [05:52<00:14,  7.31s/it]Epoch 48/50, Loss: 1.4568, Train K-Accuracy: 91.30%
+50/50 [06:06<00:00,  7.34s/it]
+
+Test K-Accuracy: 16.65%
+
+Test K-Accuracy: 16.65%
+
+Runtime: 06:06
+```
+
+Machine specs: `Darwin MBP 23.4.0 Darwin Kernel Version 23.4.0: Fri Mar 15 00:12:49 PDT 2024; root:xnu-10063.101.17~1/RELEASE_ARM64_T6020 arm64`
+
+# Qualitative Results
+
+```python
+input_test = [['why', 19], ['trump', 10], ['this is', 4], ['6 ways', 3], ['you did a', 10]]
+print(autocomplete(input_test))
+
+>>> ['why trump is a real shot a new phase in the asia move by isis wikileaks emails have citizen she',
+>>>  'trump and sanders say whether he ll accept election results what',
+>>>  'this is why clinton trump and',
+>>>  '6 ways to eat at',
+>>>  'you did a being a movement movement in the election for the history']
+```
+
+# How to run
 
 Finally I containerized the project using Docker for reproducibility.
 
