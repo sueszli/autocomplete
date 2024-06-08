@@ -1,3 +1,10 @@
+<!--
+
+**Student**: 11912007, Yahya JABARY
+
+**Topic**: 3.2.3: Deep Learning for Image/Text Classification, Next-word prediction (Language Modelling) using Deep Learning
+-->
+
 ```
  _
  \`*-.
@@ -16,39 +23,6 @@
 `*-*   `*-*  `*-*'
 ```
 
-<!-- uncomment me in final version
-
-**Student**: 11912007, Yahya JABARY
-
-**Topic**: 3.2.3: Deep Learning for Image/Text Classification, Next-word prediction (Language Modelling) using Deep Learning
--->
-
-<!--
-
-see: https://tuwel.tuwien.ac.at/course/view.php?id=64037
-
-upload:
-
-- zip file
-- docker for reproducibility (explain why you chose this base image and the dependencies)
-- markdown explaining how to run the code using CLI (argparse)
-- report
-
-report:
-
-- your solutions (also describe failed approaches!)
-- your results, evaluated on different datasets, parameters, ...
-- an analysis of the results
-
-testing:
-
-- holdout dataset of not used sentences to test the completion
-- automated or manual evaluation (subjective assessment)
-
--->
-
-**Dataset**: Fake News Dataset - https://github.com/GeorgeMcIntire/fake_real_news_dataset
-
 The language modeling task is to assign a probability for the likelihood of a given word (or a sequence of words) to follow a sequence of words, as in: $P(w_i | w_1, w_2, \ldots, w_{i-1})$.
 
 In short, the goal is to predict the next word in a sentence given the previous words.
@@ -57,20 +31,36 @@ There are many ways to approach this task, and over the years, we have come a lo
 
 This recent breakthrough (among others) is the foundation of large scale language models like GPT-3, BERT (Bidirectional Encoder Representations from Transformers), and others.
 
-This is a simple implementation of an LSTM based language model for educational purposes, trained on a dataset of fake and real news articles.
+This is a simple implementation of an LSTM based language model for educational purposes, trained on a dataset of fake and real news articles: https://github.com/GeorgeMcIntire/fake_real_news_dataset
 
 _Development Process_:
 
--   **Choosing PyTorch:** I was curious which framework RNNs are most elegant to be implemented in. So I tried both PyTorch and TensorFlow following several tutorials (see: `./playground/`). I decided to stick to PyTorch.
--   **Choosing an initial LSTM model:** Next following a tutorial on LSTM based language models [^kaggle] I implemented one in PyTorch. This model was initially trained on a dataset of Medium article titles and seemed to perform reasonably well right out of the box. It seemed like a good starting point.
+-   **Choosing PyTorch:** I was curious which framework language models are most elegant to be implemented in. So I tried both PyTorch and TensorFlow following several tutorials (see: `./playground/`). I decided to stick to PyTorch.
+
+-   **Choosing an initial LSTM model:** Next, I tried both a simple LSTM model and the built-in Pytorch `nn.Transformer` model. I found the LSTM model to be more a lot easier to follow. I found a Kaggle tutorial on LSTM based language models [^kaggle] I used as an initial starting point. This model was trained on a dataset of Medium article titles and seemed to perform reasonably well right out of the box.
+
 -   **Choosing a dataset:** I modified the Kaggle model to run on multiple different datasets, in particular, a 0.5 GB Reddit dataset of comments from `r/jokes`. Due to the fact that it took too long to train on my local machine, I decided to pivot to a smaller dataset. I found an interesting dataset of fake and real news articles on GitHub.
+
 -   **Optimizing:** I then optimized both the effectiveness and efficiency of the model by tuning hyperparameters and refactoring the code.
 
 # Quantitative Results
 
 ![](./assets/loss.png)
 
-I used seed 42 for reproducibility. The model was trained for 50 epochs with a batch size of 64 and a learning rate of 0.001. The model achieved a test K-Accuracy of 16.13% after 50 epochs.
+I used seed 42 for reproducibility and settled on the following hyperparameters:
+
+```python
+{
+    "batch_size": 32,
+    "train_size": 0.8,
+    "hidden_dim": 200,
+    "epochs": 50,
+    "dropout_prob": 0.5,
+    "lr": 0.0009,
+}
+```
+
+Resulting in the following best run:
 
 ```
 0/50 [00:00<?, ?it/s]Epoch 0/50, Loss: 6.8260, Train K-Accuracy: 10.58%
@@ -107,7 +97,11 @@ Runtime: 06:06
 
 Machine specs: `Darwin MBP 23.4.0 Darwin Kernel Version 23.4.0: Fri Mar 15 00:12:49 PDT 2024; root:xnu-10063.101.17~1/RELEASE_ARM64_T6020 arm64`
 
+Unfortunately, the model is overfitting the training data and the test accuracy is quite low. This is likely due to the small size of the dataset and the simplicity of the model. The model could be improved by using a more complex model like bidirectional LSTMs, transformers, or a larger dataset.
+
 # Qualitative Results
+
+The qualitative results on the other hand are quite promising. The model is able to generate coherent sentences and even paragraphs. Here are some examples that I found particularly funny:
 
 ```python
 input_test = [['top 3 things', 7], ['machine learning', 7], ['artificial intelligence is now', 7], ['why we cant have good things', 4], ['epic', 5]]
@@ -120,6 +114,8 @@ print(autocomplete(input_test))
 >>>  'epic nightmare revisited was correct winner']
 ```
 
+I am quite happy with the results as they capture the spirit of news headlines quite well.
+
 # How to run
 
 Finally I containerized the project using Docker for reproducibility.
@@ -131,8 +127,6 @@ docker-compose up
 ```
 
 But beware that without a CUDA enabled GPU and some tweaking of the Dockerfile, the training process will take a long time.
-
----
 
 [^fst]: History of natural language models: Jing, K., & Xu, J. (2019). A survey on neural network language models. arXiv preprint arXiv:1906.03591. https://arxiv.org/pdf/1906.03591
 [^attention]: Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., ... & Polosukhin, I. (2017). Attention is all you need. In Advances in neural information processing systems (pp. 5998-6008). https://arxiv.org/pdf/1706.03762
