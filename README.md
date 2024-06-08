@@ -23,6 +23,8 @@
 `*-*   `*-*  `*-*'
 ```
 
+<br><br>
+
 The language modeling task is to assign a probability for the likelihood of a given word (or a sequence of words) to follow a sequence of words, as in: $P(w_i | w_1, w_2, \ldots, w_{i-1})$.
 
 In short, the goal is to predict the next word in a sentence given the previous words.
