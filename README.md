@@ -110,14 +110,14 @@ Machine specs: `Darwin MBP 23.4.0 Darwin Kernel Version 23.4.0: Fri Mar 15 00:12
 # Qualitative Results
 
 ```python
-input_test = [['why', 19], ['trump', 10], ['this is', 4], ['6 ways', 3], ['you did a', 10]]
+input_test = [['top 3 things', 7], ['machine learning', 7], ['artificial intelligence is now', 7], ['why we cant have good things', 4], ['epic', 5]]
 print(autocomplete(input_test))
 
->>> ['why trump is a real shot a new phase in the asia move by isis wikileaks emails have citizen she',
->>>  'trump and sanders say whether he ll accept election results what',
->>>  'this is why clinton trump and',
->>>  '6 ways to eat at',
->>>  'you did a being a movement movement in the election for the history']
+>>> ['top 3 things to watch tonight in the presidential race',
+>>>  'machine learning on the brink of war of syria',
+>>>  'artificial intelligence is now a german and the election isn politics',
+>>>  'why we cant have good things to the supreme court',
+>>>  'epic nightmare revisited was correct winner']
 ```
 
 # How to run
