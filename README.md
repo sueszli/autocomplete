@@ -35,7 +35,7 @@ This is a simple implementation of a LSTM based language model for educational p
 
 _Development Process_:
 
--   **Choosing PyTorch:** I was curious which framework language models are most elegant to be implemented in. So I tried both PyTorch and TensorFlow following several tutorials (see: `./playground/`). I decided to stick to PyTorch.
+-   **Choosing PyTorch:** I tried both PyTorch and Tensorflow. (see: `./playground/`). I decided to stick to PyTorch.
 
 -   **Choosing an initial LSTM model:** Next, I tried both a simple LSTM model and the built-in Pytorch `nn.Transformer` module. I found the LSTM model to be more a lot easier to follow. I found a Kaggle tutorial on LSTM based language models [^kaggle] as an initial starting point. This model was trained on a dataset of Medium article titles and seemed to perform reasonably well right out of the box.
 
